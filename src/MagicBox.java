@@ -5,6 +5,7 @@ public class MagicBox<T> {
     private int qty; //кол-во абстрактных объектов, которое можно записать в экземпляр класса
     private final T[] items; // массив, в котором мы будем хранить эти абстрактные объекты экземпляра класса
     private int count = 0; //показывает, сколько ячеек массива заполнено
+    private Random random = new Random();
 
     public MagicBox(String boxName, int qty) {
         this.boxName = boxName;
@@ -33,7 +34,6 @@ public class MagicBox<T> {
             int empty = items.length - count;
             throw new RuntimeException("Необходимо заполнить все ячейки массива " + this.boxName + ". Сейчас незаполненных ячеек: " + empty + " шт.");
         }
-        Random random = new Random();
         int randomInt = random.nextInt(items.length); // определяем случайное число в диапазоне [0; items.length)
         return items[randomInt];
     }
